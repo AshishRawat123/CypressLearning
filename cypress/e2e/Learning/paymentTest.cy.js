@@ -22,10 +22,18 @@ describe('e2e Test case to add a product and and Checkout',()=>{
         InventoryPage.navigateToCart();
         CartPage.elements.cartItems().should('have.length',2);
         // Navigate to checkout Page
-        CartPage.elements.checkoutButton().click()
+        CartPage.elements.checkoutButton().click();
         CartPage.checkoutwithUserDetails();
         CartPage.validatetotalSum(['$29.99', '$9.99']);
         CartPage.finishPayment();
         CartPage.validateSucessMsg();
+    })
+
+    it('Payment should fail when no product is added with error message',()=>{
+       InventoryPage.navigateToCart();
+        CartPage.elements.checkoutButton().click();
+        CartPage.finishPayment();
+        CartPage.elements.thankYouMsg().should('not.contain', CartPage.elements.expectedThankYouMsg);
+        
     })
 })
