@@ -23,3 +23,16 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('loginSession',()=>{
+    cy.session('loginSession', () => {
+        cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        cy.get("input[name='username']").type('Admin');
+        cy.get("input[name='password']").type('admin123');
+        cy.get('button').contains('Login').click();
+
+        // Ensure that the page has fully loaded after login
+        cy.url().should('include', '/dashboard');
+        cy.get('.oxd-main-menu').should('be.visible');
+    });
+})
