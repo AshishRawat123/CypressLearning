@@ -6,4 +6,14 @@
 
  # Execude all Test Under marvin folder
  npx cypress run --spec 'cypress/e2e/Marvin/*'
+
+ #Execute a specific type of test based on TAGS
+ #only run the specs that have any tests tagged "@smoke"
+$ npx cypress run --env grepTags=@smoke,grepFilterSpecs=true --spec "cypress/e2e/Marvin/*"
+
+#run only tests that do not have any tags#and are not inside suites that have any tags$ 
+npx cypress run --env grepUntagged=true
+
+#that have "login" in their titles
+$ npx cypress run --env grep=login,grepTags=smoke
  
