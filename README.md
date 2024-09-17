@@ -3,6 +3,7 @@
 
  # To use xpath in cypress we required plugin
  npm install -D cypress-xpath
+ removed in Cypress version 13 +
 
  # Execude all Test Under marvin folder
  npx cypress run --spec 'cypress/e2e/Marvin/*'
