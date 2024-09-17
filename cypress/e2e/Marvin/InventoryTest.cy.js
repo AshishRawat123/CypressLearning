@@ -11,16 +11,12 @@ describe('Tests related to Inventory Page',()=>{
             let usersDetail = userdetail[0];
             username = usersDetail.username;
             password = usersDetail.password;
+            Login.openPage();
+            Login.loginwithUserDetails(username, password);
         })
-        // Login.openPage();
-        // Login.loginwithUserDetails(username, password);
-
     })
 
     it('Sort all product by Price',()=>{
-
-        cy.visit('https://www.saucedemo.com');
-        Login.loginIfRequired(username, password);
 
         Inventory.sortProductBy('Price (low to high)');
         Inventory.isSortByPrice();

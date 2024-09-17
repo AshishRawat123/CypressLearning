@@ -36,4 +36,15 @@ describe('Login with valid user Details',()=>{
 
     })
 
+    afterEach('Clear Cookie',()=>{
+        cy.getAllCookies().then((cookies) => {
+            cy.log(cookies.length);
+
+        })
+        cy.clearCookies();
+        cy.clearAllSessionStorage();
+        cy.clearAllSessionStorage()
+        cy.wait(2000);
+    })
+
 })

@@ -18,10 +18,12 @@ class Login {
     }
 
     loginIfRequired(username, password){
-        cy.visit('https://www.saucedemo.com/inventory.html').then()
-        let currentUrl = cy.url().then(url=>{
+        let currentUrl;
+        cy.visit('https://www.saucedemo.com').then(()=>{
+        currentUrl = cy.url().then(url=>{
             return url;
-        });
+        })
+    });
         if(!currentUrl.contains('inventory')){
             loginwithUserDetails(username, password);
         }
